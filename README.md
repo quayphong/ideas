@@ -29,7 +29,7 @@ This project is inspired by the [NestJS](https://www.youtube.com/playlist?list=P
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
@@ -57,6 +57,25 @@ $ yarn test:e2e
 # test coverage
 $ yarn test:cov
 ```
+
+## Progress
+- [x] Database connection
+- [x] CRUD operations
+- [x] Errors and logging
+- [ ] Validation errors
+- [ ] Users module
+- [ ] Authentication
+- [ ] Relationships
+- [ ] API junction tables
+- [ ] Comments module
+- [ ] Fake data
+- [ ] Pagination
+- [ ] GraphQL integration
+- [ ] GraphQL queries
+- [ ] GraphQL user resolver
+- [ ] GraphQL comment mutations
+- [ ] GraphQL idea resolver
+- [ ] Websockets
 
 ## Support
 
