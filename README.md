@@ -62,7 +62,7 @@ $ yarn test:cov
 - [x] Database connection
 - [x] CRUD operations
 - [x] Errors and logging
-- [ ] Validation errors
+- [x] Validation errors
 - [ ] Users module
 - [ ] Authentication
 - [ ] Relationships
