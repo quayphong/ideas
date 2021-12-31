@@ -63,8 +63,8 @@ $ yarn test:cov
 - [x] CRUD operations
 - [x] Errors and logging
 - [x] Validation errors
-- [ ] Users module
-- [ ] Authentication
+- [x] Users module
+- [x] Authentication
 - [ ] Relationships
 - [ ] API junction tables
 - [ ] Comments module
