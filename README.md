@@ -66,7 +66,7 @@ $ yarn test:cov
 - [x] Users module
 - [x] Authentication
 - [x] Relationships
-- [ ] API junction tables
+- [x] API junction tables
 - [ ] Comments module
 - [ ] Fake data
 - [ ] Pagination

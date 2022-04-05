@@ -46,4 +46,28 @@ export class IdeaController {
         this.logData({id, user});
         return this.ideaService.destroy(id, user.id);
     }
+
+    @Post(':id/bookmark')
+    bookmarkIdea(@Param('id') id: string, @User('id') user){
+        this.logData({id, user});
+        return this.ideaService.bookmark(id, user.id);
+    }
+
+    @Delete(':id/bookmark')
+    unbookmarkIdea(@Param('id') id: string, @User('id') user){
+        this.logData({id, user});    
+        return this.ideaService.unbookmark(id, user.id);
+    }
+
+    @Post(':id/upvote')
+    upvoteIdea(@Param('id') id: string, @User('id') user){
+        this.logData({id, user});
+        return this.ideaService.upvote(id, user.id);
+    }
+
+    @Delete(':id/downvote')
+    downvoteIdea(@Param('id') id: string, @User('id') user){
+        this.logData({id, user});    
+        return this.ideaService.downvote(id, user.id);
+    }
 }

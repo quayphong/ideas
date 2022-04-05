@@ -1,13 +1,21 @@
 import { Injectable, CanActivate, ExecutionContext, HttpException, HttpStatus } from '@nestjs/common';
-import console from 'console';
-import { Request } from 'express';
+import { Reflector } from '@nestjs/core';
 import * as jwt from 'jsonwebtoken'
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  constructor(private readonly reflector: Reflector){
+  }
+
   canActivate(
     context: ExecutionContext
   ): boolean | Promise<boolean>{
+
+    const isPublic = this.reflector.get<boolean>("isPublic", context.getHandler());
+    if(isPublic){
+      return true;
+    }
+
     const request = context.switchToHttp().getRequest();
     if(!request.headers.authorization){
         return false;

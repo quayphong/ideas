@@ -11,11 +11,6 @@ import { AuthGuard } from '../shared/auth.guard';
 @Module({
   imports: [TypeOrmModule.forFeature([IdeaEntity, UserEntity])],
   controllers: [IdeaController],
-  providers: [IdeaService,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard
-    }
-  ]
+  providers: [IdeaService]
 })
 export class IdeaModule {}
