@@ -1,5 +1,6 @@
 import { UserEntity } from '../user/user.entity';
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { CommentEntity } from '../comment/comment.entity';
 
 @Entity('idea')
 export class IdeaEntity{
@@ -23,4 +24,7 @@ export class IdeaEntity{
     @ManyToMany(() => UserEntity, {cascade: true})
     @JoinTable()
     downvotes: UserEntity[];
+
+    @OneToMany(() => CommentEntity, comment => comment.idea, {cascade: true})
+    comments: CommentEntity[];
 }

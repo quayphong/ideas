@@ -67,7 +67,7 @@ $ yarn test:cov
 - [x] Authentication
 - [x] Relationships
 - [x] API junction tables
-- [ ] Comments module
+- [x] Comments module
 - [ ] Fake data
 - [ ] Pagination
 - [ ] GraphQL integration
