@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Logger, Param, Post, Put, UseGuards, UsePipes } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, Param, Post, Put, Query, UseGuards, UsePipes } from '@nestjs/common';
 import { User } from '../user/user.decorator';
 import { ValidationPipe } from '../shared/validation.pipe';
 import { IdeaDTO } from './idea.dto';
@@ -18,8 +18,13 @@ export class IdeaController {
     }
 
     @Get()
-    showAllIdeas(){
-        return this.ideaService.showAll();
+    showAllIdeas(@Query('page') page: number){
+        return this.ideaService.showAll(page);
+    }
+
+    @Get('/newest')
+    showNewestIdeas(@Query('page') page: number){
+        return this.ideaService.showAll(page, true);
     }
 
     @Post()

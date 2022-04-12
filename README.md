@@ -68,8 +68,8 @@ $ yarn test:cov
 - [x] Relationships
 - [x] API junction tables
 - [x] Comments module
-- [ ] Fake data
-- [ ] Pagination
+- [x] Fake data
+- [x] Pagination
 - [ ] GraphQL integration
 - [ ] GraphQL queries
 - [ ] GraphQL user resolver
