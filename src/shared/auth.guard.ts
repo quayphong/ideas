@@ -17,8 +17,15 @@ export class AuthGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest();
+
+    // GraphQL 
+    if(!request)
+    {
+      return true;
+    }
+
     if(!request.headers.authorization){
-        return false;
+      return false;
     }
 
     request.user = this.validateToken(request.headers.authorization);

@@ -1,4 +1,5 @@
 import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common'
+import { GqlExecutionContext } from '@nestjs/graphql';
 import { Observable } from 'rxjs';
 import {tap} from 'rxjs/operators'
 
@@ -6,14 +7,24 @@ import {tap} from 'rxjs/operators'
 export class LoggingInterceptor implements NestInterceptor{
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
         const req = context.switchToHttp().getRequest();
-        const method = req.method;
-        const url = req.url;
         const now = Date.now();
-
-        return next
-            .handle()
-            .pipe(
-                tap(() => Logger.log(`${method} ${url} ${Date.now() - now}ms`))
-        );
+        if(req){
+            const method = req.method;
+            const url = req.url;
+            return next
+                .handle()
+                .pipe(
+                    tap(() => Logger.log(`${method} ${url} ${Date.now() - now}ms`))
+            );
+        } else {
+            const ctx: any = GqlExecutionContext.create(context);
+            const resolverName = ctx.constructorRef.name;
+            const info = ctx.args[3];
+            return next
+                .handle()
+                .pipe(
+                    tap(() => Logger.log(`${info.parentType} "${info.fieldName}" ${Date.now() - now}ms`, resolverName))
+                );
+        }
     }
 }

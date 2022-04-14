@@ -70,7 +70,7 @@ $ yarn test:cov
 - [x] Comments module
 - [x] Fake data
 - [x] Pagination
-- [ ] GraphQL integration
+- [x] GraphQL integration
 - [ ] GraphQL queries
 - [ ] GraphQL user resolver
 - [ ] GraphQL comment mutations
