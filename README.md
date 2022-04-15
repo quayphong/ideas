@@ -71,7 +71,7 @@ $ yarn test:cov
 - [x] Fake data
 - [x] Pagination
 - [x] GraphQL integration
-- [ ] GraphQL queries
+- [x] GraphQL queries
 - [ ] GraphQL user resolver
 - [ ] GraphQL comment mutations
 - [ ] GraphQL idea resolver
