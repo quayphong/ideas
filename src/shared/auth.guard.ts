@@ -1,5 +1,6 @@
 import { Injectable, CanActivate, ExecutionContext, HttpException, HttpStatus } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+import { GqlExecutionContext } from '@nestjs/graphql';
 import * as jwt from 'jsonwebtoken'
 
 @Injectable()
@@ -19,18 +20,28 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
 
     // GraphQL 
-    if(!request)
-    {
+    if(request){
+      if(!request.headers.authorization){
+        return false;
+      }
+
+      request.user = this.validateToken(request.headers.authorization);
+      return true;
+    } else {
+      const whitelist: string[] = ['login'];
+      const ctx: any = GqlExecutionContext.create(context);
+      const reqs = ctx.args[2];
+      const info = ctx.args[3];
+
+      if(whitelist.indexOf(info.fieldName) > -1)
+        return true;
+
+      if(!reqs.req.headers.authorization){
+        return false;
+      }
+      ctx.args[2].user = this.validateToken(reqs.req.headers.authorization);
       return true;
     }
-
-    if(!request.headers.authorization){
-      return false;
-    }
-
-    request.user = this.validateToken(request.headers.authorization);
-    
-    return true;
   }
 
   validateToken(auth: string){

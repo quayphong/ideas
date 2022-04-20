@@ -17,7 +17,8 @@ import { CommentModule } from './comment/comment.module';
   imports: [TypeOrmModule.forRoot(), IdeaModule, UserModule, CommentModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       typePaths:['./**/*.graphql'],
-      driver: ApolloDriver
+      driver: ApolloDriver,
+      context: ({ req }) => ({ req })
     })
     ],
   controllers: [AppController],
