@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <ul id="#idea"> </ul>
+    <script src="https://cdn.socket.io/socket.io-3.0.5.js"></script>
+    <script>
+        const socket = io('http://localhost:4001')
+        socket.on('connection',(data) => console.log(data));
+
+        socket.on('newIdea', data => {
+            console.log(data);
+            document.getElementById('#idea').innerHTML += `
+            <li> 
+                <div>
+                    <h2>${data.idea}</h2>
+                    <p>${data.description}</p>
+                </div>
+            </li>
+            `
+        });
+    </script>
+</body>
+</html>

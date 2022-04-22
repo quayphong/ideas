@@ -74,8 +74,8 @@ $ yarn test:cov
 - [x] GraphQL queries
 - [x] GraphQL user resolver
 - [x] GraphQL comment mutations
-- [ ] GraphQL idea resolver
-- [ ] Websockets
+- [x] GraphQL idea resolver
+- [x] Websockets
 
 ## Support
 
