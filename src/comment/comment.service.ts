@@ -78,7 +78,7 @@ export class CommentService {
             throw new HttpException('You do not own this comment', HttpStatus.UNAUTHORIZED);
         }
 
-        await this.commentRepository.remove(comment);        
+        await this.commentRepository.delete({id});        
         return this.toResponseObject(comment);
     }
 }

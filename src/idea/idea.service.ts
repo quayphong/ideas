@@ -99,7 +99,7 @@ export class IdeaService {
 
         this.ensureOwnership(idea, userId);
         await this.ideaRepository.delete({id});
-        return idea;
+        return this.toResponseObject(idea);
     }
 
     async bookmark(id: string, userId: string){

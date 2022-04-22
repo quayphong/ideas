@@ -72,8 +72,8 @@ $ yarn test:cov
 - [x] Pagination
 - [x] GraphQL integration
 - [x] GraphQL queries
-- [ ] GraphQL user resolver
-- [ ] GraphQL comment mutations
+- [x] GraphQL user resolver
+- [x] GraphQL comment mutations
 - [ ] GraphQL idea resolver
 - [ ] Websockets
 
